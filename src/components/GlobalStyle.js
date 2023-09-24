@@ -10,6 +10,7 @@ body {
   background-color: #343541;
   color: #ECECF1;
   margin: 0;
+  padding: 20px;
   font-family: -apple-system, BlinkMacSystemFont, 'Roboto', 
     sans-serif;
   -webkit-font-smoothing: antialiased;
