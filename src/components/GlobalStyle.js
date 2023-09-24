@@ -47,6 +47,7 @@ img {
     }
 
 h1, h2 {
-    margin: 40px;
+    text-align: center;
+    margin: 40px auto 20px;
 }
 `;

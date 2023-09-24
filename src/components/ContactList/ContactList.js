@@ -13,6 +13,7 @@ import {
   StyledContactItem,
   StyledContactNumber,
   StyledContactsBlock,
+  StyledContactItemBlock,
   DeleteButton,
 } from './ContactList.styled';
 
@@ -45,9 +46,9 @@ const filter = useSelector(selectFilter) || '';
           ) : (
             displayedContacts.map(({ id, name, phone }) => (
               <StyledContactItem key={id}>
-                <div>
+                <StyledContactItemBlock>
                   {name}:<StyledContactNumber>{phone}</StyledContactNumber>
-                </div>
+                </StyledContactItemBlock>
                 <DeleteButton
                   type="button"
                   onClick={() => dispatch(deleteContact(id))}
