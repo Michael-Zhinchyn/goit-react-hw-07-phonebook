@@ -2,10 +2,9 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { deleteContact, fetchContacts } from 'redux/operations';
 import {
-  selectContacts,
   selectIsLoading,
   selectIsError,
-  selectFilter,
+  selectDisplayedContacts,
 } from 'redux/selectors';
 import { MdOutlineDeleteForever } from 'react-icons/md';
 import {
@@ -24,16 +23,9 @@ export const ContactList = () => {
     dispatch(fetchContacts());
   }, [dispatch]);
 
-  const allContacts = useSelector(selectContacts);
   const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectIsError);
-const filter = useSelector(selectFilter) || '';
-
-  const displayedContacts = allContacts.filter(
-    contact =>
-      contact.name && contact.name.toLowerCase().includes(filter.toLowerCase())
-  );
-
+  const displayedContacts = useSelector(selectDisplayedContacts);
 
   return (
     <StyledContactsBlock>
