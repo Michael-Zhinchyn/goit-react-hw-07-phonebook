@@ -11,8 +11,7 @@ export const StyledContactItem = styled.li`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 10px;
-  font-size: 18px;
-  font-weight: 600;
+  font-weight: 500;
   list-style: circle;
 `;
 
