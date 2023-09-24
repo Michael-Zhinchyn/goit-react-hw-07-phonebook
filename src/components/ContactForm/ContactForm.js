@@ -1,16 +1,16 @@
-import { Formik } from 'formik';
+import { Formik, Field } from 'formik';
 import * as Yup from 'yup';
 import {
   StyledForm,
   SubmitFromBtn,
   StyledField,
+  StyledPatternFormat,
   ErrorText,
   StyledFieldBlock,
   StyledFieldLabel,
 } from './ContactForm.styled';
 
 export const ContactForm = () => {
-
   const NameSchema = Yup.object().shape({
     name: Yup.string()
       .min(2, 'Too Short!')
@@ -19,15 +19,18 @@ export const ContactForm = () => {
         /^[A-Za-zА-Яа-яЄєІіЇїҐґ\s]+$/,
         'Only alphabets and spaces are allowed'
       )
-
       .required('Required'),
-
     number: Yup.string()
-      .matches(/^\d{9}$/, 'Must be exactly 9 digits')
-      .required('Required'),
+      .required('Required')
+      .matches(/^\+1 \(\d{3}\) \d{4} \d{3}$/, 'Invalid format!'),
   });
 
   const handleSubmit = (values, action) => {
+    const newContact = {
+      name: values.name,
+      number: values.number,
+    };
+    console.log(newContact);
     action.resetForm();
   };
 
@@ -47,11 +50,20 @@ export const ContactForm = () => {
 
           <StyledFieldBlock>
             <StyledFieldLabel>Number</StyledFieldLabel>
-            <StyledField
-              type="tel"
-              name="number"
-              placeholder="enter 9 digits number"
-            />
+            <Field name="number">
+              {({ field, form }) => (
+                <StyledPatternFormat
+                  format="+1 (###) ### ####"
+                  allowEmptyFormatting
+                  mask="_"
+                  value={form.values.number}
+                  onValueChange={({ formattedValue }) => {
+                    form.setFieldValue('number', formattedValue);
+                  }}
+                  {...field}
+                />
+              )}
+            </Field>
             <ErrorText name="number" component="div" />
           </StyledFieldBlock>
 

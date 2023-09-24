@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Form, Field, ErrorMessage } from 'formik';
+import { PatternFormat } from 'react-number-format';
 
 export const StyledForm = styled(Form)`
   display: flex;
@@ -12,6 +13,19 @@ export const StyledForm = styled(Form)`
 `;
 
 export const StyledField = styled(Field)`
+  background-color: #40414f;
+  outline: none;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  padding: 6px;
+  width: 250px;
+  &::placeholder {
+    color: #8e8483;
+  }
+`;
+
+export const StyledPatternFormat = styled(PatternFormat)`
   background-color: #40414f;
   outline: none;
   color: white;
