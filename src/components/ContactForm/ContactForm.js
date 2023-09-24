@@ -9,6 +9,8 @@ import {
   StyledFieldBlock,
   StyledFieldLabel,
 } from './ContactForm.styled';
+import { useDispatch } from 'react-redux';
+import { addContact } from 'redux/operations';
 
 export const ContactForm = () => {
   const NameSchema = Yup.object().shape({
@@ -24,15 +26,17 @@ export const ContactForm = () => {
       .required('Required')
       .matches(/^\+1 \(\d{3}\) \d{4} \d{3}$/, 'Invalid format!'),
   });
+  const dispatch = useDispatch();
 
   const handleSubmit = (values, action) => {
+    
    
     const newContact = {
       name: values.name,
-      number: values.number,
+      phone: values.number,
     };
 
-    console.log(newContact);
+    dispatch(addContact(newContact))
     action.resetForm();
   };
 
@@ -61,7 +65,7 @@ export const ContactForm = () => {
             <Field name="number">
               {({ field, form }) => (
                 <StyledPatternFormat
-                  format="+1 (###) ### ####"
+                  format="+1 (###) #### ###"
                   allowEmptyFormatting
                   mask="_"
                   value={form.values.number}

@@ -24,19 +24,24 @@ export const ContactList = () => {
 
   const displayedContact = allContacts;
 
+  const contactToDelete = (e) => {
+console.log(e.target);
+  }
+ 
+
   return (
     <StyledContactsBlock>
       {isLoading && !error && <b>Loading...</b>}
       <StyledContactList>
         {displayedContact.map(item => {
           const { id, name, phone } = item;
-
+           
           return (
             <StyledContactItem key={id}>
               <div>
                 {name}:<StyledContactNumber>{phone}</StyledContactNumber>
               </div>
-              <DeleteButton type="button">
+              <DeleteButton type="button" onClick={contactToDelete}>
                 <MdOutlineDeleteForever size={25} />
               </DeleteButton>
             </StyledContactItem>
