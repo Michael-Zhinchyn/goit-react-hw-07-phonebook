@@ -5,14 +5,8 @@ import { PatternFormat } from 'react-number-format';
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  padding: 50px;
   border: 1px solid grey;
-  margin-left: 40px;
 
-  @media (min-width: 768px) {
-    width: 500px;
-  }
 `;
 
 export const StyledField = styled(Field)`
@@ -22,7 +16,7 @@ export const StyledField = styled(Field)`
   border-radius: 8px;
   border: none;
   padding: 6px;
-  width: 250px;
+  
   &::placeholder {
     color: #8e8483;
   }
@@ -35,7 +29,7 @@ export const StyledPatternFormat = styled(PatternFormat)`
   border-radius: 8px;
   border: none;
   padding: 6px;
-  width: 250px;
+ 
   &::placeholder {
     color: #8e8483;
   }
