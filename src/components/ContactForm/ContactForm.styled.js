@@ -6,10 +6,13 @@ export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  width: 500px;
   padding: 50px;
   border: 1px solid grey;
   margin-left: 40px;
+
+  @media (min-width: 768px) {
+    width: 500px;
+  }
 `;
 
 export const StyledField = styled(Field)`

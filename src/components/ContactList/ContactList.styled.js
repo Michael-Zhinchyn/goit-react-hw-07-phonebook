@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const StyledContactsBlock = styled.div`
   width: 400px;
-  margin-left: 60px;
+  margin-left: 40px;
 `;
 
 export const StyledContactList = styled.ul``;
