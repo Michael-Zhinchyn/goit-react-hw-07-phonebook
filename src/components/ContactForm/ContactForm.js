@@ -26,13 +26,21 @@ export const ContactForm = () => {
   });
 
   const handleSubmit = (values, action) => {
+   
     const newContact = {
       name: values.name,
       number: values.number,
     };
+
     console.log(newContact);
     action.resetForm();
   };
+
+   const handleNumberChange =
+     form =>
+     ({ formattedValue }) => {
+       form.setFieldValue('number', formattedValue);
+     };
 
   return (
     <>
@@ -57,9 +65,7 @@ export const ContactForm = () => {
                   allowEmptyFormatting
                   mask="_"
                   value={form.values.number}
-                  onValueChange={({ formattedValue }) => {
-                    form.setFieldValue('number', formattedValue);
-                  }}
+                  onValueChange={handleNumberChange(form)}
                   {...field}
                 />
               )}
